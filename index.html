@@ -309,16 +309,23 @@
   @media(max-width:980px){
     .grid{grid-template-columns:repeat(2,1fr);}
     .hero{height:auto; min-height:auto;}
-    .slide{position:relative; inset:auto; grid-template-columns:1fr; grid-template-rows:280px auto; display:none;}
-    .slide.active{display:grid;}
-    .slide-img{display:block; height:280px;}
-    .slide-img img{transform:scale(1);}
+    .slide{position:relative; inset:auto; display:none;}
+    .slide.active{display:block;}
+    .slide-img{
+      position:relative; width:100%; aspect-ratio:3/4; overflow:hidden;
+      background:linear-gradient(160deg, var(--maroon-deep), var(--maroon-soft));
+    }
+    .slide-img img{width:100%; height:100%; object-fit:contain; transform:none;}
     .slide-img::after{display:none;}
-    .slide-text{background:var(--maroon-deep); padding:28px 24px 34px; height:auto;}
-    .slide-text h2{font-size:2rem; max-width:100%;}
-    .hero-badge{width:64px; height:64px; font-size:0.6rem; top:20px; right:20px;}
-    .hero-nav{bottom:auto; top:230px; left:20px;}
-    .hero-arrows{bottom:auto; top:222px; right:20px;}
+    .slide-text{
+      position:absolute; left:0; right:0; bottom:0; z-index:3; height:auto;
+      background:linear-gradient(0deg, var(--maroon-deep) 30%, rgba(61,11,30,0.82) 60%, rgba(61,11,30,0) 100%);
+      padding:80px 24px 30px;
+    }
+    .slide-text h2{font-size:1.9rem; max-width:100%;}
+    .hero-badge{display:none;}
+    .hero-nav{bottom:auto; top:16px; left:20px;}
+    .hero-arrows{bottom:auto; top:12px; right:20px;}
     .footer-inner{grid-template-columns:1fr 1fr;}
     .product-detail{grid-template-columns:1fr; gap:30px;}
     .search-wrap input{width:110px;}
@@ -337,13 +344,12 @@
     .section-head h2{font-size:1.5rem;}
     .footer-inner{grid-template-columns:1fr;}
     .cart-item-price{text-align:left; margin-left:100px;}
-    .slide-img{height:220px;}
-    .slide-text{padding:22px 18px 28px;}
-    .slide-text h2{font-size:1.6rem;}
-    .slide-tag{margin-bottom:14px;}
-    .slide-price{margin-bottom:18px;}
-    .hero-nav{left:18px; top:180px;}
-    .hero-arrows{right:18px; top:172px;}
+    .slide-text{padding:70px 18px 26px;}
+    .slide-text h2{font-size:1.5rem;}
+    .slide-tag{margin-bottom:12px;}
+    .slide-price{margin-bottom:16px;}
+    .hero-nav{left:18px; top:14px;}
+    .hero-arrows{right:18px; top:10px;}
     .hero-arrows button{width:36px; height:36px;}
   }
 </style>
