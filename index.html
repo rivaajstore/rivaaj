@@ -308,9 +308,17 @@
   /* ---------- Responsive ---------- */
   @media(max-width:980px){
     .grid{grid-template-columns:repeat(2,1fr);}
-    .slide{grid-template-columns:1fr;}
-    .slide-img{display:none;}
-    .slide-text{background:var(--maroon-deep); padding:0 32px;}
+    .hero{height:auto; min-height:auto;}
+    .slide{position:relative; inset:auto; grid-template-columns:1fr; grid-template-rows:280px auto; display:none;}
+    .slide.active{display:grid;}
+    .slide-img{display:block; height:280px;}
+    .slide-img img{transform:scale(1);}
+    .slide-img::after{display:none;}
+    .slide-text{background:var(--maroon-deep); padding:28px 24px 34px; height:auto;}
+    .slide-text h2{font-size:2rem; max-width:100%;}
+    .hero-badge{width:64px; height:64px; font-size:0.6rem; top:20px; right:20px;}
+    .hero-nav{bottom:auto; top:230px; left:20px;}
+    .hero-arrows{bottom:auto; top:222px; right:20px;}
     .footer-inner{grid-template-columns:1fr 1fr;}
     .product-detail{grid-template-columns:1fr; gap:30px;}
     .search-wrap input{width:110px;}
@@ -329,6 +337,14 @@
     .section-head h2{font-size:1.5rem;}
     .footer-inner{grid-template-columns:1fr;}
     .cart-item-price{text-align:left; margin-left:100px;}
+    .slide-img{height:220px;}
+    .slide-text{padding:22px 18px 28px;}
+    .slide-text h2{font-size:1.6rem;}
+    .slide-tag{margin-bottom:14px;}
+    .slide-price{margin-bottom:18px;}
+    .hero-nav{left:18px; top:180px;}
+    .hero-arrows{right:18px; top:172px;}
+    .hero-arrows button{width:36px; height:36px;}
   }
 </style>
 </head>
@@ -435,7 +451,7 @@
   <section>
     <div class="section-head">
       <div><div class="crumb">Home / All</div><h2 class="serif">The Complete Edit</h2></div>
-      <div class="result-count">16 items</div>
+      <div class="result-count">22 items</div>
     </div>
     <div class="grid" id="grid-home">
       <div class="card reveal" data-cat="Short Kurti"><a href="#product/p1" class="card-img"><span class="meesho-logo-badge"></span><span class="card-badge">Bestseller</span><span class="card-wish">&#9825;</span><img src="https://images.meesho.com/images/products/637196021/fbpte_512.webp" alt="Blue Floral Cotton Short Kurti"></a><div class="card-body"><div class="card-cat">Short Kurti</div><a href="#product/p1"><h3>Blue Floral Cotton Short Kurti</h3></a><div class="card-price"><span class="now">₹275</span><span class="old">₹275</span><span class="off">0% off</span></div><button class="card-cart-btn meesho-btn" onclick="openInMeesho('p1',this)">Open in Meesho</button></div></div>
@@ -454,6 +470,12 @@
       <div class="card reveal" data-cat="Saree"><a href="#product/p14" class="card-img"><span class="meesho-logo-badge"></span><span class="card-badge">Bestseller</span><span class="card-wish">&#9825;</span><img src="https://images.meesho.com/images/products/172905418/w6bvd_512.webp" alt="Chanderi Cotton Floral Saree"></a><div class="card-body"><div class="card-cat">Saree</div><a href="#product/p14"><h3>Chanderi Cotton Floral Saree</h3></a><div class="card-price"><span class="now">₹352</span><span class="old">₹352</span><span class="off">0% off</span></div><button class="card-cart-btn meesho-btn" onclick="openInMeesho('p14',this)">Open in Meesho</button></div></div>
       <div class="card reveal" data-cat="Saree"><a href="#product/p15" class="card-img"><span class="meesho-logo-badge"></span><span class="card-wish">&#9825;</span><img src="https://images.meesho.com/images/products/476325362/2qgg5_512.webp" alt="Pink Brasso Net Saree"></a><div class="card-body"><div class="card-cat">Saree</div><a href="#product/p15"><h3>Pink Brasso Net Saree</h3></a><div class="card-price"><span class="now">₹234</span><span class="old">₹234</span><span class="off">0% off</span></div><button class="card-cart-btn meesho-btn" onclick="openInMeesho('p15',this)">Open in Meesho</button></div></div>
       <div class="card reveal" data-cat="Saree"><a href="#product/p16" class="card-img"><span class="meesho-logo-badge"></span><span class="card-wish">&#9825;</span><img src="https://images.meesho.com/images/products/964243599/v5tbc_512.webp" alt="Olive Green Georgette Party Saree"></a><div class="card-body"><div class="card-cat">Saree</div><a href="#product/p16"><h3>Olive Green Georgette Party Saree</h3></a><div class="card-price"><span class="now">₹368</span><span class="old">₹368</span><span class="off">0% off</span></div><button class="card-cart-btn meesho-btn" onclick="openInMeesho('p16',this)">Open in Meesho</button></div></div>
+      <div class="card reveal" data-cat="Short Kurti"><a href="#product/p17" class="card-img"><span class="meesho-logo-badge"></span><span class="card-wish">&#9825;</span><img src="https://images.meesho.com/images/products/931721014/qiqep_512.webp" alt="Green Floral Square-Neck Short Kurti"></a><div class="card-body"><div class="card-cat">Short Kurti</div><a href="#product/p17"><h3>Green Floral Square-Neck Short Kurti</h3></a><div class="card-price"><span class="now">₹185</span><span class="old">₹185</span><span class="off">0% off</span></div><button class="card-cart-btn meesho-btn" onclick="openInMeesho('p17',this)">Open in Meesho</button></div></div>
+      <div class="card reveal" data-cat="Short Kurti"><a href="#product/p18" class="card-img"><span class="meesho-logo-badge"></span><span class="card-wish">&#9825;</span><img src="https://images.meesho.com/images/products/1032692705/d7fx4_512.webp" alt="Olive Green Floral Tie-Up Neck Short Kurti"></a><div class="card-body"><div class="card-cat">Short Kurti</div><a href="#product/p18"><h3>Olive Green Floral Tie-Up Neck Short Kurti</h3></a><div class="card-price"><span class="now">₹214</span><span class="old">₹214</span><span class="off">0% off</span></div><button class="card-cart-btn meesho-btn" onclick="openInMeesho('p18',this)">Open in Meesho</button></div></div>
+      <div class="card reveal" data-cat="Short Kurti"><a href="#product/p19" class="card-img"><span class="meesho-logo-badge"></span><span class="card-wish">&#9825;</span><img src="https://images.meesho.com/images/products/1026549161/g7twl_512.webp" alt="Blue Embroidered Short Kurti Top"></a><div class="card-body"><div class="card-cat">Short Kurti</div><a href="#product/p19"><h3>Blue Embroidered Short Kurti Top</h3></a><div class="card-price"><span class="now">₹262</span><span class="old">₹262</span><span class="off">0% off</span></div><button class="card-cart-btn meesho-btn" onclick="openInMeesho('p19',this)">Open in Meesho</button></div></div>
+      <div class="card reveal" data-cat="Short Kurti"><a href="#product/p20" class="card-img"><span class="meesho-logo-badge"></span><span class="card-wish">&#9825;</span><img src="https://images.meesho.com/images/products/1047175575/mh9qi_512.webp" alt="Black Floral Printed Straight Kurti"></a><div class="card-body"><div class="card-cat">Short Kurti</div><a href="#product/p20"><h3>Black Floral Printed Straight Kurti</h3></a><div class="card-price"><span class="now">₹258</span><span class="old">₹265</span><span class="off">3% off</span></div><button class="card-cart-btn meesho-btn" onclick="openInMeesho('p20',this)">Open in Meesho</button></div></div>
+      <div class="card reveal" data-cat="Short Kurti"><a href="#product/p21" class="card-img"><span class="meesho-logo-badge"></span><span class="card-badge">Bestseller</span><span class="card-wish">&#9825;</span><img src="https://images.meesho.com/images/products/480179648/fhsvn_512.webp" alt="Purple Chikankari Short Kurta"></a><div class="card-body"><div class="card-cat">Short Kurti</div><a href="#product/p21"><h3>Purple Chikankari Short Kurta</h3></a><div class="card-price"><span class="now">₹278</span><span class="old">₹278</span><span class="off">0% off</span></div><button class="card-cart-btn meesho-btn" onclick="openInMeesho('p21',this)">Open in Meesho</button></div></div>
+      <div class="card reveal" data-cat="Short Kurti"><a href="#product/p22" class="card-img"><span class="meesho-logo-badge"></span><span class="card-wish">&#9825;</span><img src="https://images.meesho.com/images/products/567678841/dvrir_512.webp" alt="Black Chikankari Embroidered Short Kurti"></a><div class="card-body"><div class="card-cat">Short Kurti</div><a href="#product/p22"><h3>Black Chikankari Embroidered Short Kurti</h3></a><div class="card-price"><span class="now">₹243</span><span class="old">₹271</span><span class="off">10% off</span></div><button class="card-cart-btn meesho-btn" onclick="openInMeesho('p22',this)">Open in Meesho</button></div></div>
     </div>
   </section>
 </div>
@@ -575,7 +597,14 @@ const products = [
   {id:'p13', name:'Pink Stone-Work Organza Saree', cat:'Saree', price:307, old:307, badge:'Bestseller', img:'https://images.meesho.com/images/products/541121291/j845x_512.webp', img2:'https://images.meesho.com/images/products/541121291/q8nnr_512.webp', img3:'https://images.meesho.com/images/products/541121291/lzzs4_512.webp', img4:'https://images.meesho.com/images/products/541121291/3h9vr_512.webp', fabric:'Jimmy Choo (saree), Art Silk (blouse - running blouse)', work:'Beads & stones embellishment, lace border', desc:'Pink embellished party-wear saree with stone/bead work, lace border, running blouse in art silk. Bollywood-style, free size.'},
   {id:'p14', name:'Chanderi Cotton Floral Saree', cat:'Saree', price:352, old:352, badge:'Bestseller', img:'https://images.meesho.com/images/products/172905418/w6bvd_512.webp', img2:'https://images.meesho.com/images/products/172905418/d2y04_512.webp', img3:'https://images.meesho.com/images/products/172905418/4lg4e_512.webp', img4:'https://images.meesho.com/images/products/172905418/7oi28_512.webp', fabric:'Chanderi Cotton (saree), Jacquard (separate blouse piece)', work:'Jacquard ornamentation, floral print', desc:'Pink handloom chanderi cotton saree with floral print and separate white jacquard blouse piece. Daily wear, free size.'},
   {id:'p15', name:'Pink Brasso Net Saree', cat:'Saree', price:234, old:234, badge:'', img:'https://images.meesho.com/images/products/476325362/2qgg5_512.webp', img2:'', img3:'', img4:'', fabric:'Net (saree & running blouse)', work:'Embroidered', desc:'Pink net saree with embroidered pattern, running blouse in matching net fabric. Party wear, free size.'},
-  {id:'p16', name:'Olive Green Georgette Party Saree', cat:'Saree', price:368, old:368, badge:'', img:'https://images.meesho.com/images/products/964243599/v5tbc_512.webp', img2:'', img3:'', img4:'', fabric:'Georgette (saree & separate blouse piece)', work:'Lace border, embellished', desc:'Green (olive) georgette silk saree with lace border and embellished pattern, separate mehendi-color georgette blouse piece. Handloom, party wear. Brand: RANGTARANG.'}
+  {id:'p16', name:'Olive Green Georgette Party Saree', cat:'Saree', price:368, old:368, badge:'', img:'https://images.meesho.com/images/products/964243599/v5tbc_512.webp', img2:'', img3:'', img4:'', fabric:'Georgette (saree & separate blouse piece)', work:'Lace border, embellished', desc:'Green (olive) georgette silk saree with lace border and embellished pattern, separate mehendi-color georgette blouse piece. Handloom, party wear. Brand: RANGTARANG.'},
+,
+  {id:'p17', name:'Green Floral Square-Neck Short Kurti', cat:'Short Kurti', price:185, old:185, badge:'', img:'https://images.meesho.com/images/products/931721014/qiqep_512.webp', img2:'https://images.meesho.com/images/products/931721014/tkusy_512.webp', img3:'https://images.meesho.com/images/products/931721014/ccvbo_512.webp', img4:'', fabric:'Cotton Blend', work:'Lace border ornamentation, floral printed', desc:'Green short kurti with square neck, bell sleeves, lace border, oversized white lily floral print. Above-knee length, daily wear.'},
+  {id:'p18', name:'Olive Green Floral Tie-Up Neck Short Kurti', cat:'Short Kurti', price:214, old:214, badge:'', img:'https://images.meesho.com/images/products/1032692705/d7fx4_512.webp', img2:'https://images.meesho.com/images/products/1032692705/fc9dt_512.webp', img3:'https://images.meesho.com/images/products/1032692705/n7cj6_512.webp', img4:'https://images.meesho.com/images/products/1032692705/er4o8_512.webp', fabric:'Cotton Blend', work:'Tie-up neckline detailing, floral printed', desc:'Olive green short kurti with round tie-up neck, 3/4 bell sleeves with lace detailing, floral print. Ideal for office wear, college, casual outings.'},
+  {id:'p19', name:'Blue Embroidered Short Kurti Top', cat:'Short Kurti', price:262, old:262, badge:'', img:'https://images.meesho.com/images/products/1026549161/g7twl_512.webp', img2:'https://images.meesho.com/images/products/1026549161/espvo_512.webp', img3:'https://images.meesho.com/images/products/1026549161/egnsv_512.webp', img4:'https://images.meesho.com/images/products/1026549161/tmc4w_512.webp', fabric:'Rayon', work:'Embroidered, floral print', desc:'Blue short kurti/top with notch neck, three-quarter regular sleeves, embroidered floral pattern. Casual daily wear.'},
+  {id:'p20', name:'Black Floral Printed Straight Kurti', cat:'Short Kurti', price:258, old:265, badge:'', img:'https://images.meesho.com/images/products/1047175575/mh9qi_512.webp', img2:'https://images.meesho.com/images/products/1047175575/zam1m_512.webp', img3:'https://images.meesho.com/images/products/1047175575/9c2sh_512.webp', img4:'https://images.meesho.com/images/products/1047175575/573lm_512.webp', fabric:'Cotton', work:'Mirror work ornamentation, floral printed', desc:'Black short kurti, square neck, sleeveless, calf length, mirror work detailing with floral print. Daily/office wear. 3% off.'},
+  {id:'p21', name:'Purple Chikankari Short Kurta', cat:'Short Kurti', price:278, old:278, badge:'Bestseller', img:'https://images.meesho.com/images/products/480179648/fhsvn_512.webp', img2:'https://images.meesho.com/images/products/480179648/tfitb_512.webp', img3:'https://images.meesho.com/images/products/480179648/yrhqn_512.webp', img4:'https://images.meesho.com/images/products/480179648/tpilw_512.webp', fabric:'Rayon', work:'Embroidered, Chikankari pattern', desc:'Purple A-line short kurti, round neck, three-quarter sleeves, embroidered chikankari-style floral pattern. Above-knee length, daily wear.'},
+  {id:'p22', name:'Black Chikankari Embroidered Short Kurti', cat:'Short Kurti', price:243, old:271, badge:'', img:'https://images.meesho.com/images/products/567678841/dvrir_512.webp', img2:'https://images.meesho.com/images/products/567678841/mhlqg_512.webp', img3:'https://images.meesho.com/images/products/567678841/gjmzr_512.webp', img4:'https://images.meesho.com/images/products/567678841/3aehr_512.webp', fabric:'Rayon', work:'Embroidered, Chikankari pattern with border embroidery', desc:'Black short kurti with white floral embroidery pattern, notch neck, three-quarter sleeves, above-knee length. Daily wear. 10% off.'}
 ];
 
 /* =====================================================================
@@ -644,7 +673,13 @@ const meeshoLinks = {
   p13: 'https://www.meesho.com/af_invite/382206743:facebook:8293228?p_id=541121291&ext_id=8y63uz&utm_source=facebook',
   p14: 'https://www.meesho.com/af_invite/382206743:facebook:8293243?p_id=172905418&ext_id=2uxyoa&utm_source=facebook',
   p15: 'https://www.meesho.com/af_invite/382206743:facebook:8293259?p_id=476325362&ext_id=7vlb02&utm_source=facebook',
-  p16: 'https://www.meesho.com/af_invite/382206743:facebook:8293272?p_id=964243599&ext_id=fy334f&utm_source=facebook'
+  p16: 'https://www.meesho.com/af_invite/382206743:facebook:8293272?p_id=964243599&ext_id=fy334f&utm_source=facebook',
+  p17: 'https://www.meesho.com/af_invite/382206743:facebook:8454545?p_id=931721014&ext_id=feq0ja&utm_source=facebook',
+  p18: 'https://www.meesho.com/af_invite/382206743:instagram_stories:8454585?p_id=1032692705&ext_id=h2u6sh&utm_source=instagram_stories',
+  p19: 'https://www.meesho.com/af_invite/382206743:facebook:8454619?p_id=1026549161&ext_id=gz6ieh&utm_source=facebook',
+  p20: 'https://www.meesho.com/af_invite/382206743:facebook:8454658?p_id=1047175575&ext_id=hbgluf&utm_source=facebook',
+  p21: 'https://www.meesho.com/af_invite/382206743:facebook:8454711?p_id=480179648&ext_id=7xvwzk&utm_source=facebook',
+  p22: 'https://www.meesho.com/af_invite/382206743:facebook:8454728?p_id=567678841&ext_id=9dzbsp&utm_source=facebook'
 };
 
 function openInMeesho(id, btn){
